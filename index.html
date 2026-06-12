@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>津鲜生自选火锅 · 围挡开业全方案</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --red:#C62828;--red-light:#FFE8E8;
+  --orange:#D4762A;--orange-light:#FFF3E0;
+  --gold:#F4A100;--gold-light:#FFF3D6;
+  --dark:#2D2D2D;--gray:#666;--light:#F5F2ED;
+  --white:#FFF;--green:#2D6A4F;--green-light:#E8F5E9;
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:#FFFBF5;color:var(--dark);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,0.04);
+  padding:0 10px;height:44px;
+  display:flex;align-items:center;
+  overflow-x:auto;scrollbar-width:none;
+}
+nav::-webkit-scrollbar{display:none}
+nav a{
+  white-space:nowrap;font-size:11px;color:var(--gray);
+  text-decoration:none;padding:4px 8px;border-radius:5px;
+  flex-shrink:0;font-weight:500;
+}
+nav a:hover,nav a.active{color:var(--red);background:var(--red-light)}
+.hero{
+  padding:70px 18px 32px;text-align:center;
+  background:linear-gradient(160deg,#1A0A0A 0%,#6B1D1D 50%,#D4762A 100%);
+  color:#FFF;min-height:50vh;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'🍲🥩🥬🌶️🦐';position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);font-size:120px;opacity:0.04;
+  letter-spacing:20px;pointer-events:none;
+}
+.hero .badge{
+  display:inline-block;background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(4px);padding:4px 14px;border-radius:20px;
+  font-size:10px;letter-spacing:2px;margin-bottom:14px;border:1px solid rgba(255,255,255,0.08);
+}
+.hero h1{font-size:clamp(28px,5vw,40px);font-weight:800;letter-spacing:3px;}
+.hero h1 span{color:var(--gold)}
+.hero .sub{font-size:clamp(12px,2vw,15px);opacity:.8;margin:6px 0 10px;font-weight:300;}
+.hero .highlight-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--gold);color:#111;padding:6px 18px;border-radius:6px;
+  font-size:14px;font-weight:700;margin:8px 0;
+}
+.hero .tags{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin-top:12px;}
+.hero .tags span{background:rgba(255,255,255,0.1);padding:3px 9px;border-radius:14px;font-size:10px;border:1px solid rgba(255,255,255,0.08);}
+.container{max-width:780px;margin:0 auto;padding:0 16px;}
+.scene{padding:32px 0;border-bottom:1px solid rgba(0,0,0,0.04)}
+.scene:last-child{border-bottom:none}
+.scene-title{font-size:clamp(17px,2.8vw,22px);font-weight:700;margin-bottom:8px;}
+.scene-title em{font-style:normal;color:var(--red)}
+.scene-title em.gold{color:var(--gold)}
+.s-divider{width:40px;height:3px;border-radius:2px;margin:5px 0 12px}
+.s-divider.red{background:var(--red)}
+.s-divider.gold{background:var(--gold)}
+.card{background:var(--white);border-radius:11px;padding:16px 14px;margin-bottom:9px;box-shadow:0 2px 14px rgba(0,0,0,0.05)}
+.card:last-child{margin-bottom:0}
+.card .tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px;margin-bottom:5px;letter-spacing:1px}
+.card .tag.red{background:var(--red-light);color:var(--red)}
+.card .tag.gold{background:var(--gold-light);color:#A67C00}
+.card .tag.green{background:var(--green-light);color:var(--green)}
+.card .tag.orange{background:var(--orange-light);color:var(--orange)}
+.card .tag.blue{background:#E3F2FD;color:#0F3460}
+.card h3{font-size:14px;font-weight:700;margin-bottom:4px}
+.card p,.card li{font-size:13px;color:#555;line-height:1.7}
+.card ul{padding-left:15px;margin:4px 0}
+.card ul li{margin-bottom:3px}
+.card ul li::marker{color:var(--red)}
+.highlight{padding:10px 13px;border-radius:8px;border-left:3px solid var(--red);font-size:13px;color:#444;margin:8px 0}
+.highlight.gold{border-left-color:var(--gold);background:var(--gold-light)}
+.highlight.red{border-left-color:var(--red);background:var(--red-light)}
+.highlight.green{border-left-color:var(--green);background:var(--green-light)}
+.highlight.orange{border-left-color:var(--orange);background:var(--orange-light)}
+.highlight.dark{border-left-color:#1A1A2E;background:#F0F0F5}
+.highlight strong{color:var(--dark)}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+@media(max-width:600px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;margin:8px 0;border-radius:9px;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+table{width:100%;border-collapse:collapse;font-size:12px;background:var(--white)}
+th{padding:8px 10px;text-align:left;font-weight:700;font-size:11px;letter-spacing:1px;background:var(--red);color:#FFF}
+th.gold{background:var(--gold);color:#111}
+th.dark{background:#1A1A2E}
+td{padding:7px 10px;border-bottom:1px solid #F0EDE8;color:#555}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#FAFAFA}
+.footer{text-align:center;padding:22px 18px;color:#AAA;font-size:11px;border-top:1px solid rgba(0,0,0,0.04)}
+.kpi-row{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.kpi-item{flex:1;min-width:70px;background:var(--white);border-radius:7px;padding:10px 7px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,0.05)}
+.kpi-item .num{font-size:20px;font-weight:900;color:var(--red)}
+.kpi-item .lbl{font-size:10px;color:var(--gray);margin-top:2px}
+.kpi-item.gold .num{color:var(--gold)}
+.kpi-item.orange .num{color:var(--orange)}
+.fence-preview{
+  background:linear-gradient(135deg,#1A0A0A 0%,#6B1D1D 40%,#D4762A 100%);
+  border-radius:12px;padding:28px 18px;margin:10px 0;color:#FFF;text-align:center;
+  position:relative;overflow:hidden;
+}
+.fence-preview::before{
+  content:'🍲';position:absolute;top:-10px;right:-10px;font-size:80px;opacity:0.06;
+}
+.fence-preview h4{font-size:24px;margin-bottom:4px;letter-spacing:4px;}
+.fence-preview .sub-title{color:var(--gold);font-size:12px;letter-spacing:4px;margin-bottom:10px;}
+.fence-preview .feats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:10px;}
+.fence-preview .feats span{background:rgba(255,255,255,0.1);padding:4px 10px;border-radius:14px;font-size:11px;}
+.fence-preview .line{border-top:1px dashed rgba(255,255,255,0.12);margin:10px 0;padding:6px 0;font-size:12px;opacity:.7;}
+.fence-preview .cta{background:var(--gold);color:#111;padding:8px 24px;border-radius:6px;font-size:13px;font-weight:700;display:inline-block;margin-top:6px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#strategy">品牌定位</a>
+  <a href="#fence">围挡设计</a>
+  <a href="#open">开业活动</a>
+  <a href="#pos">智能收银</a>
+  <a href="#groupon">团购运营</a>
+  <a href="#member">会员体系</a>
+  <a href="#online">线上运营</a>
+  <a href="#private">私域社群</a>
+  <a href="#budget">预算</a>
+  <a href="#timeline">时间线</a>
+</nav>
+
+<div class="hero">
+  <div class="badge">🍲 津鲜生 · 围挡开业全方案</div>
+  <h1>津鲜生<span>自选火锅</span></h1>
+  <div class="sub">塘沽·杭州道 · 称重自选 · 丰俭由人</div>
+  <div class="highlight-tag">⚖️ 自选称重火锅 · 想吃啥拿啥 · 按斤算钱</div>
+  <div class="tags">
+    <span>📍 塘沽杭州道</span>
+    <span>⚖️ 自选称重</span>
+    <span>🦐 海鲜+涮菜</span>
+    <span>💰 人均¥50-80</span>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- 01 品牌定位 -->
+<div class="scene" id="strategy">
+  <h2 class="scene-title">01 · 品牌定位 · <em>称重火锅 · 塘沽人的自选食堂</em></h2>
+  <div class="s-divider red"></div>
+
+  <div class="highlight gold">
+    <strong>🎯 核心定位：</strong>津鲜生不是传统火锅店——它是<strong>「自选称重火锅」</strong>。顾客拿着托盘自己选菜，称重计费，想吃多少拿多少。核心卖点就是<strong>「丰俭由人 · 不浪费 · 想吃什么拿什么」</strong>。在塘沽杭州道这种社区密集的地方，家庭客和年轻人都会买单。
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag red">🎯 称重火锅的优势</span>
+      <p>
+      <strong>对顾客的好处：</strong><br>
+      • 丰俭由人——吃多少拿多少，不浪费<br>
+      • 选择自由——海鲜/肉类/蔬菜随便搭配<br>
+      • 价格透明——称重计价，明码实价<br>
+      • 适合一个人吃——传统火锅一个人难吃，称重火锅一个人也行<br><br>
+      <strong>对老板的好处：</strong><br>
+      • 减少菜品损耗（称重计费不怕剩）<br>
+      • 后厨简单（切好摆出去就行，不需要炒菜师傅）<br>
+      • 人工成本低（不需要KDS·不需要服务员点菜）<br>
+      • 翻台快（自取速度快）
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag green">👥 客群画像</span>
+      <p>
+      <strong>塘沽杭州道周边客群：</strong><br><br>
+      • <strong>家庭客（40%）：</strong>一家三口来吃，人均¥50-60，丰俭由人<br>
+      • <strong>年轻人/朋友聚餐（30%）：</strong>想吃火锅又想省钱，称重模式最划算<br>
+      • <strong>一个人吃火锅（15%）：</strong>传统火锅一个人不方便，称重火锅一个人也能吃<br>
+      • <strong>周边上班族（15%）：</strong>午餐吃顿称重火锅，方便又实惠<br><br>
+      <strong>人群画像：</strong>25-50岁，塘沽本地居民和上班族，追求性价比和便利性
+      </p>
+    </div>
+  </div>
+
+  <div class="highlight red">
+    <strong>💡 称重火锅+海鲜的卖点：</strong>店名叫"津鲜生"——天津+鲜生（海鲜），可以在自选区放活海鲜（虾、蟹、贝类），让顾客自己捞称重。虾和贝类比普通涮菜毛利高，还能提升客单价！
+  </div>
+</div>
+
+<!-- 02 围挡设计 -->
+<div class="scene" id="fence">
+  <h2 class="scene-title">02 · 围挡设计 · <em>让人停下来扫码</em></h2>
+  <div class="s-divider gold"></div>
+
+  <div class="fence-preview">
+    <h4>🦐 津鲜生·自选火锅</h4>
+    <div class="sub-title">JINXIANKENG · SELF-SERVICE HOTPOT</div>
+    <div class="feats">
+      <span>⚖️ 自选称重·丰俭由人</span>
+      <span>🦐 海鲜现捞</span>
+      <span>🥩 鲜肉鲜菜</span>
+      <span>💰 人均¥50起</span>
+    </div>
+    <div class="line">⏳ 即将开业 &nbsp;·&nbsp; 📍 杭州道·河北路交口</div>
+    <div class="cta">🎁 扫码进群 · 开业免费吃</div>
+  </div>
+
+  <div class="grid-2" style="margin-top:10px;">
+    <div class="card">
+      <span class="tag red">🪧 围挡视觉策略</span>
+      <p>
+      <strong>主色调：</strong>火锅红+金黄（和"津鲜生"品牌色统一）<br>
+      <strong>主视觉：</strong>称重盘上堆满海鲜+肉+蔬菜的插画<br>
+      <strong>核心文案：</strong><br>
+      • "塘沽人的自选火锅食堂"<br>
+      • "想吃什么拿什么 · 称重计费不浪费"<br>
+      • "海鲜现捞 · 鲜肉现切 · 蔬菜自选"<br>
+      • "人均¥50起，吃到撑"<br><br>
+      <strong>必放：</strong>开业时间、地址、3个群二维码
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag gold">🎯 围挡上的引流钩子</span>
+      <p>
+      <strong>三个钩子：</strong><br><br>
+      <strong>钩子① "扫码进群抽火锅霸王餐"</strong><br>
+      扫码进群 → 开业前抽10个免费吃名额<br><br>
+      <strong>钩子② "前100名5折"</strong><br>
+      扫码登记 → 开业前100名到店享称重5折<br><br>
+      <strong>钩子③ "称重挑战"</strong><br>
+      围挡上印一个"猜猜这一盘多少钱"的游戏<br>
+      扫码猜价格 → 猜中最接近的送双人套餐<br><br>
+      <strong>💡 用"称重"这个点做互动，和品牌绑定</strong>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 03 开业活动 -->
+<div class="scene" id="open">
+  <h2 class="scene-title">03 · 开业活动 · <em>称重火锅 · 简单直接</em></h2>
+  <div class="s-divider red"></div>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th style="width:16%;">时间</th><th>活动</th><th>玩法</th><th style="width:12%;">预算</th></tr>
+      <tr><td><strong>D-7~D-1</strong></td><td>📱 蓄水</td><td>社群每日发装修进度+食材预告+抽奖送免费</td><td>¥200</td></tr>
+      <tr><td><strong>D-Day~D+3</strong></td><td>🔥 开业3天狂欢</td><td>称重全场8折，到店发朋友圈送饮料1瓶</td><td>¥600</td></tr>
+      <tr><td><strong>D+4~D+7</strong></td><td>🎯 第二波</td><td>双人称重套餐特价¥68（原价¥100+），限量每天50份</td><td>¥400</td></tr>
+      <tr><td><strong>D+8~D+14</strong></td><td>💳 储值锁客</td><td>充100送20，充200送50 — 称重火锅复购率高，储值必做</td><td>¥0</td></tr>
+      <tr><td><strong>持续</strong></td><td>⭐ 好评</td><td>收藏打卡到店送饮品 — 禁好评返现</td><td>¥200</td></tr>
+    </table>
+  </div>
+
+  <div class="grid-2" style="margin-top:10px;">
+    <div class="card">
+      <span class="tag gold">🎯 核心活动：称重挑战</span>
+      <p>
+      <strong>开业前在群里玩"称重挑战"：</strong><br><br>
+      ① 老板拿出一盘配好的火锅食材拍照发群里<br>
+      ② 让大家猜"这一盘多少钱"<br>
+      ③ 猜中最接近的3个人 → 开业当天免费吃双人套餐<br><br>
+      <strong>效果：</strong>提前让顾客记住"称重计费"的模式<br>
+      <strong>成本：</strong>3份免费≈0-¥100
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag orange">🔥 称重火锅专属活动</span>
+      <p>
+      <strong>"火锅搭子"活动：</strong><br><br>
+      ① 两人同行 → 称重享9折<br>
+      ② 三人同行 → 称重享85折<br>
+      ③ 四人及以上 → 称重享8折<br><br>
+      <strong>效果：</strong>鼓励拼桌，人越多越划算<br>
+      人均¥50-80×折扣=顾客觉得赚了<br><br>
+      <strong>明码标价的优势：</strong>传统火锅打折顾客没感觉<br>
+      称重火锅直接打折 → 顾客看着称上的数字减少 → 爽
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 04 智能收银 -->
+<div class="scene" id="pos">
+  <h2 class="scene-title">04 · 美团智能版收银 · <em>称重收银一体化</em></h2>
+  <div class="s-divider gold"></div>
+
+  <div class="highlight orange">
+    <strong>💡 称重火锅收银的特点：</strong>传统火锅按锅底+点菜计费，称重火锅<strong>按重量计费</strong>。收银系统需要支持<strong>电子秤直连</strong>——顾客选好菜放秤上，重量自动录入收银系统，自动算价。不需要服务员人工算账，效率翻倍。
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th>功能</th><th>解决什么问题</th><th>对津鲜生的价值</th></tr>
+      <tr><td><strong>⚖️ 电子秤直连</strong></td><td>称重数据自动录入收银系统</td><td>不用服务员记重量+算价格，杜绝算错</td></tr>
+      <tr><td><strong>📱 扫码点餐</strong></td><td>锅底/饮料/加菜扫码自助下单</td><td>顾客扫码选锅底口味+加饮料，不用排队</td></tr>
+      <tr><td><strong>🎫 团购核销</strong></td><td>团购券一码核销</td><td>开业团购量大，不排队不压单</td></tr>
+      <tr><td><strong>💳 会员储值</strong></td><td>开业储值活动一键开启</td><td>称重火锅复购率高，储值是锁客利器</td></tr>
+      <tr><td><strong>📊 经营报表</strong></td><td>卖了多少斤、哪个时段人多</td><td>按重量分析菜品消耗，精准控制备货量</td></tr>
+      <tr><td><strong>📦 外卖接单</strong></td><td>美团外卖聚合接单</td><td>称重火锅套餐也可以做外卖（按份卖）</td></tr>
+    </table>
+  </div>
+
+  <div class="highlight green" style="margin-top:10px;">
+    <strong>🎯 收银流程：</strong><br>
+    ① 顾客到店 → 先扫码点锅底（选口味/辣度）<br>
+    ② 拿托盘去自选区选菜 → 装满回到收银台<br>
+    ③ 收银员把菜放电子秤上 → 重量自动进系统 → 扫码结账<br>
+    ④ 入座开吃 → 吃完了直接走 → 团购券/储值已核销<br><br>
+    <strong>不需要KDS：</strong>称重火锅后厨只负责切菜摆盘，不需要炒菜/出餐管理，所以不用KDS。
+  </div>
+
+  <div class="card" style="margin-top:10px;">
+    <span class="tag red">💰 80-100㎡推荐配置</span>
+    <p>
+    <strong>智能版收银机 × 1台</strong>（带电子秤接口）→ 收银+称重+团购核销+会员管理<br>
+    <strong>电子秤 × 1台</strong> → 和收银系统直连，称重自动计价<br>
+    <strong>扫码点餐桌贴 × 15张</strong> → 扫码选锅底/加饮料<br>
+    <strong>扫码枪 × 1台</strong> → 团购核销<br>
+    <strong>后厨打印机 × 1台</strong> → 锅底订单打印到厨房<br><br>
+    <strong>参考报价：¥1,800-2,500</strong>（含电子秤，具体咨询销售）
+    </p>
+  </div>
+</div>
+
+<!-- 05 团购运营 -->
+<div class="scene" id="groupon">
+  <h2 class="scene-title">05 · 团购运营 · <em>称重火锅最适合做团购</em></h2>
+  <div class="s-divider red"></div>
+
+  <div class="highlight gold">
+    <strong>💡 称重火锅的团购逻辑：</strong>传统火锅团购套餐要规定固定菜品，很麻烦。称重火锅的团购可以做<strong>"代金券"或"折扣券"</strong>——买代金券到店按称重金额抵扣，顾客不用被固定套餐限制，体验更好。
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th style="width:22%;">团购产品</th><th style="width:14%;">定价</th><th>策略</th></tr>
+      <tr><td><strong>🎯 ¥50代¥70券</strong></td><td><strong>¥50</strong></td><td>核心引流款！相当于称重打7折，顾客超爱这种简单直接的优惠</td></tr>
+      <tr><td><strong>🎯 双人畅吃套餐</strong></td><td><strong>¥99</strong></td><td>含锅底+2人份称重上限1.5kg+饮料，简单明了</td></tr>
+      <tr><td><strong>🎯 单人火锅套餐</strong></td><td><strong>¥49</strong></td><td>含锅底+单人称重+小料，一个人也能吃！称重火锅差异化产品</td></tr>
+      <tr><td><strong>🎯 开业尝鲜券</strong></td><td><strong>¥6.8</strong></td><td>¥6.8抵¥20，开业引爆单量，限量200份</td></tr>
+    </table>
+  </div>
+
+  <div class="grid-2" style="margin-top:10px;">
+    <div class="card">
+      <span class="tag blue">📈 推广通</span>
+      <p>
+      <strong>投放方案：</strong><br>
+      • 每天¥50-100，定向塘沽3公里<br>
+      • 重点推"¥50代¥70券"（引流款）<br>
+      • 投放时段：午市10:00-12:00，晚市16:00-18:00<br>
+      • 塘沽杭州道周边小区密集 → 精准投放
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag orange">🎯 "单人火锅"差异化</span>
+      <p>
+      <strong>称重火锅的独特卖点：一个人也能吃火锅</strong><br><br>
+      传统火锅一个人吃不了（锅底贵、菜多）<br>
+      但称重火锅一个人也能轻松吃！<br><br>
+      • 单人套餐¥49 → "一个人的火锅自由"<br>
+      • 在推广通+抖音重点推这个点<br>
+      • 塘沽很多上班族/学生人群一个人吃饭的需求很大
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 06 会员体系 -->
+<div class="scene" id="member">
+  <h2 class="scene-title">06 · 会员体系 · <em>称重火锅复购率高 · 储值必做</em></h2>
+  <div class="s-divider gold"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag red">💳 储值方案</span>
+      <p>
+      <strong>称重火锅的特点：</strong>顾客一旦觉得好吃，会反复来吃<br>
+      因为称重模式方便快捷，比传统火锅更"日常"<br><br>
+      <strong>储值力度：</strong><br>
+      • 充100送15（≈87折）<br>
+      • 充200送40（≈83折）<br>
+      • 充500送120（≈8折）——适合家庭常客<br><br>
+      <strong>储值权益：</strong><br>
+      • 储值会员享称重95折<br>
+      • 生日月送免费锅底1份<br>
+      • 每月储值日双倍积分
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag gold">🎯 称重积分玩法</span>
+      <p>
+      <strong>消费1元=1积分</strong><br><br>
+      <strong>积分兑换：</strong><br>
+      300分 → 免费锅底1份<br>
+      500分 → 免费小料+饮料<br>
+      1,000分 → 免费称重1斤<br><br>
+      <strong>趣味玩法："集斤换斤"</strong><br>
+      每次称重消费记录斤数<br>
+      累计消费满10斤 → 免费送1斤<br>
+      💡 和"称重"这个品牌特性绑定，好玩又好记！
+      </p>
+    </div>
+  </div>
+
+  <div class="highlight orange">
+    <strong>💡 "集斤换斤"玩法的好处：</strong>每次结账小票上显示"本次消费X斤 · 累计消费X斤 · 还差X斤免费换1斤"——让顾客有"攒"的动力，每次吃火锅都来津鲜生！
+  </div>
+</div>
+
+<!-- 07 线上运营 -->
+<div class="scene" id="online">
+  <h2 class="scene-title">07 · 线上运营 · <em>大众点评+抖音+私域</em></h2>
+  <div class="s-divider red"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag blue">📱 美团·大众点评</span>
+      <p>
+      <strong>开业前：</strong><br>
+      • 立即在美团/点评创建门店<br>
+      • 上传自选区的实拍图（海鲜+肉+蔬菜堆满的视觉冲击）<br>
+      • 设置团购套餐（代金券+双人套餐）<br><br>
+      <strong>开业期：</strong><br>
+      • 推广通每天¥50-100，定向塘沽<br>
+      • 鼓励评价（收藏打卡送饮料）<br>
+      • 标题重点写"称重火锅""自选""丰俭由人"<br><br>
+      <strong>开业后：</strong><br>
+      • 保持评分4.3+<br>
+      • 定期更新菜单和实拍图
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag orange">🎬 抖音同城</span>
+      <p>
+      <strong>称重火锅天然适合短视频：</strong><br><br>
+      <strong>内容方向（手机拍）：</strong><br>
+      ① 自选区全景——海鲜/肉/蔬菜堆满的视觉冲击<br>
+      ② 称重过程——一盘菜放秤上，价格自动算出来<br>
+      ③ "拿满这一盘要多少钱"挑战——和称重互动<br>
+      ④ 一个人吃火锅——"塘沽也能一个人吃火锅了"<br><br>
+      <strong>"拿满这一盘多少钱"挑战：</strong><br>
+      拍一个人装满一盘食材→称重→"猜猜多少钱"<br>
+      这种互动内容超级适合抖音传播！<br><br>
+      <strong>投放：</strong>抖加同城¥50/条，定向塘沽3公里
+      </p>
+    </div>
+  </div>
+
+  <div class="highlight gold">
+    <strong>🎯 称重火锅的抖音必火内容：</strong>"拿满这一盘，猜猜多少钱？"——让网友在评论区猜价格，猜得最接近的送免费吃！这种互动内容自带传播属性，评论区会炸！
+  </div>
+</div>
+
+<!-- 08 私域社群 -->
+<div class="scene" id="private">
+  <h2 class="scene-title">08 · 私域社群 · <em>围挡期就开始养</em></h2>
+  <div class="s-divider red"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <span class="tag red">📊 社群节奏</span>
+      <p>
+      <strong>围挡期（D-30~D-1）：蓄水群</strong><br>
+      • 发装修进度：门头装好了/自选区摆好了<br>
+      • "猜称重"游戏互动<br>
+      • 抽霸王餐<br><br>
+      <strong>开业期（D-Day~D+14）：活跃群</strong><br>
+      • 每日特价预告（仅群友享）<br>
+      • 到店发图领红包¥1-2<br>
+      • 开业火爆场面直播<br><br>
+      <strong>常态化：福利群</strong><br>
+      • 每周三"群友称重日"——群友享88折<br>
+      • 每月"集斤换斤"活动<br>
+      • 新品试吃邀请
+      </p>
+    </div>
+    <div class="card">
+      <span class="tag green">🎯 拉人策略</span>
+      <p>
+      <strong>围挡扫码（40%）：</strong><br>
+      围挡上贴3个群二维码<br><br>
+      <strong>开业到店拉群（40%）：</strong><br>
+      到店顾客→扫码进群→送饮料<br><br>
+      <strong>抖音评论区（20%）：</strong><br>
+      评论抽奖→引导进群<br><br>
+      <strong>目标：</strong><br>
+      开业前：2个群各200人<br>
+      开业后1个月：3个群各500人
+      </p>
+    </div>
+  </div>
+
+  <div class="highlight dark">
+    <strong>💡 群名建议：</strong>「津鲜生·塘沽火锅搭子群」——"搭子"这个词年轻人喜欢，群里可以约人拼桌吃火锅！
+  </div>
+</div>
+
+<!-- 09 预算 -->
+<div class="scene" id="budget">
+  <h2 class="scene-title">09 · 预算 · <em>开业总预算¥3,800</em></h2>
+  <div class="s-divider gold"></div>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th style="width:22%;">项目</th><th style="width:12%;">预算</th><th>说明</th></tr>
+      <tr><td>🪧 围挡制作+安装</td><td><strong>¥600</strong></td><td>喷绘布+安装</td></tr>
+      <tr><td>🎁 开业霸王餐+抽奖</td><td><strong>¥300</strong></td><td>10份免费吃+猜称重奖品</td></tr>
+      <tr><td>🔥 开业3天8折让利</td><td><strong>¥800</strong></td><td>按日均50单×让利部分估算</td></tr>
+      <tr><td>📱 推广通（14天）</td><td><strong>¥700</strong></td><td>每天¥50，定向塘沽3公里</td></tr>
+      <tr><td>🎬 抖音抖加（90天）</td><td><strong>¥1,200</strong></td><td>每周投2-3条¥50</td></tr>
+      <tr><td>🤝 社群红包+互动</td><td><strong>¥200</strong></td><td>开业期群内抽奖</td></tr>
+      <tr><th class="dark">💰 开业总预算</th><th><strong>¥3,800</strong></th><th>控制成本，精准投放</th></tr>
+    </table>
+  </div>
+
+  <div class="highlight green">
+    <strong>💡 省钱Tips：</strong><br>
+    • 围挡找广告公司做，熟人价<br>
+    • 抖音自己手机拍+剪映剪，0制作费<br>
+    • 社群自己运营，0人工成本<br>
+    • "猜称重"互动不需要花钱做物料，群里直接玩<br>
+    • 初期团购用代金券形式，核销简单
+  </div>
+</div>
+
+<!-- 10 时间线+KPI -->
+<div class="scene" id="timeline" style="border-bottom:none;">
+  <h2 class="scene-title">10 · 时间线+KPI · <em>倒排工期</em></h2>
+  <div class="s-divider red"></div>
+
+  <div class="table-wrap">
+    <table>
+      <tr><th style="width:14%;">时间</th><th style="width:16%;">阶段</th><th>关键动作</th></tr>
+      <tr><td><strong>D-30~D-14</strong></td><td>🏗️ 筹备</td><td>装围挡、创建社群（3个码贴围挡上）、开通美团门店、设计团购套餐</td></tr>
+      <tr><td><strong>D-14~D-7</strong></td><td>📱 蓄水</td><td>社群每日发进度+猜称重游戏、抖音预热视频、推广通开启</td></tr>
+      <tr><td><strong>D-7~D-1</strong></td><td>🔥 冲刺</td><td>开业倒计时、霸王餐开奖、收银系统+电子秤调试完毕</td></tr>
+      <tr><td><strong>D-Day~D+3</strong></td><td>🎉 开业</td><td>称重8折、朋友圈裂变、抖音直播、社群实时分享</td></tr>
+      <tr><td><strong>D+4~D+14</strong></td><td>📈 稳定</td><td>双人套餐特价、储值活动、收集评价</td></tr>
+    </table>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-item"><div class="num">2个群</div><div class="lbl">蓄水各200人</div></div>
+    <div class="kpi-item gold"><div class="num">¥2,000</div><div class="lbl">首月日均营收</div></div>
+    <div class="kpi-item orange"><div class="num">4.3⭐</div><div class="lbl">首月评分</div></div>
+    <div class="kpi-item"><div class="num">¥3,800</div><div class="lbl">总预算</div></div>
+  </div>
+
+  <div class="highlight red" style="margin-top:10px;">
+    <strong>🔥 一句话总结：</strong>津鲜生·自选火锅——<strong>塘沽第一家称重火锅，按斤算钱丰俭由人。</strong>围挡蓄水→开业称重打折→代金券团购引流→社群养客→储值锁客。称重模式省人工、省后厨、翻台快，在塘沽杭州道这个位置，只要把"称重自助"的卖点打透，绝对能做起来！<strong>用美团智能版收银+电子秤一体化，收银效率翻倍 👊</strong>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  🍲 津鲜生自选火锅 · 围挡开业全方案 · 2026年6月<br>
+  塘沽·杭州道 · 称重自选 · 丰俭由人
+</div>
+
+<script>
+document.querySelectorAll('nav a').forEach(a => {
+  a.addEventListener('click', function(e) {
+    document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      document.querySelectorAll('nav a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, {rootMargin:'-55px 0px -50% 0px'});
+document.querySelectorAll('.scene').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>
